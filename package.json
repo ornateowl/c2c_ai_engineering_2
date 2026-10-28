@@ -1,0 +1,21 @@
+{
+  "name": "pokemon-partner-finder",
+  "version": "1.0.0",
+  "description": "Pokemon partner finder website with Express API and SQLite data store",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "pokemon",
+    "express",
+    "sqlite"
+  ],
+  "author": "AI assistant",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  }
+}

@@ -1,0 +1,3 @@
+node_modules/
+pokemon.db
+npm-debug.log*

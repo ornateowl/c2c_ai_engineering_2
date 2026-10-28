@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Partner Finder</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Pokémon Companion Match</p>
+          <h1>Find Your Perfect Partner</h1>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <h2>Build your battle profile</h2>
+
+          <form id="partner-form">
+            <div class="field-group">
+              <label for="trainerName">Trainer name</label>
+              <input id="trainerName" name="trainerName" type="text" placeholder="Ash" value="Ash" />
+            </div>
+
+            <div class="field-grid two-up">
+              <div class="field-group">
+                <label for="battleStyle">Battle style</label>
+                <select id="battleStyle" name="battleStyle">
+                  <option value="offense">Offense</option>
+                  <option value="defense">Defense</option>
+                  <option value="balance" selected>Balanced</option>
+                  <option value="support">Support</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="preferredType">Favorite type</label>
+                <select id="preferredType" name="preferredType">
+                  <option value="Any" selected>Any type</option>
+                  <option value="Electric">Electric</option>
+                  <option value="Fire">Fire</option>
+                  <option value="Water">Water</option>
+                  <option value="Grass">Grass</option>
+                  <option value="Psychic">Psychic</option>
+                  <option value="Dark">Dark</option>
+                  <option value="Fairy">Fairy</option>
+                  <option value="Fighting">Fighting</option>
+                  <option value="Dragon">Dragon</option>
+                  <option value="Ghost">Ghost</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-grid two-up">
+              <div class="field-group">
+                <label for="teamRole">Ideal team role</label>
+                <select id="teamRole" name="teamRole">
+                  <option value="tank">Tank</option>
+                  <option value="striker">Striker</option>
+                  <option value="support" selected>Support</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="battleMood">Battle vibe</label>
+                <select id="battleMood" name="battleMood">
+                  <option value="calm">Calm</option>
+                  <option value="aggressive" selected>Aggressive</option>
+                  <option value="strategic">Strategic</option>
+                  <option value="team-first">Team-first</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="stats-block">
+              <h3>Preferred stats</h3>
+
+              <div class="slider-group">
+                <label for="attack">Attack</label>
+                <input id="attack" name="attack" type="range" min="0" max="100" value="72" />
+                <span class="slider-value">72</span>
+              </div>
+
+              <div class="slider-group">
+                <label for="defense">Defense</label>
+                <input id="defense" name="defense" type="range" min="0" max="100" value="60" />
+                <span class="slider-value">60</span>
+              </div>
+
+              <div class="slider-group">
+                <label for="speed">Speed</label>
+                <input id="speed" name="speed" type="range" min="0" max="100" value="80" />
+                <span class="slider-value">80</span>
+              </div>
+
+              <div class="slider-group">
+                <label for="special">Special</label>
+                <input id="special" name="special" type="range" min="0" max="100" value="75" />
+                <span class="slider-value">75</span>
+              </div>
+
+              <div class="slider-group">
+                <label for="stamina">Stamina</label>
+                <input id="stamina" name="stamina" type="range" min="0" max="100" value="68" />
+                <span class="slider-value">68</span>
+              </div>
+            </div>
+
+            <button type="submit" class="primary-btn">Choose my partner</button>
+          </form>
+        </section>
+
+        <section class="panel result-panel">
+          <h2>Recommended partner</h2>
+          <div id="result-card" class="result-card empty">
+            <p>Submit your preferences to discover your battle partner.</p>
+          </div>
+
+          <div class="mini-list">
+            <h3>Top alternatives</h3>
+            <ul id="alternative-list">
+              <li>Waiting for a match...</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
