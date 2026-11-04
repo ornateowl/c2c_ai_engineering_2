@@ -3,3 +3,7 @@ I asked the AI to create a pokemon partner finder app. It did that, but only too
 I asked the AI to be more accurate with type recommendations because it recommended fire type pokemon when I specified grass. It was able to fix this (I tested with a few pokemon from different generations and decided if the types matched up), and I ended with a functional website that was more accurate to type.
 
 The AI created a base stats slider which made it difficult for users to understand. I asked the AI to remove this and instead ask the user which stat they prefer to be highest instead of confusing them with a slider. The AI did exactly this. 
+
+I asked the assistant to create a menu where users choose preferences from. I was unable to see the text because of color similarity so I asked it to switch the text color to white. It fixed this and there is sufficient contrast
+
+I asked the AI to prompt the user for preferred stat. It added a slider to the bottom which made it unclear for new trainers. I asked the AI to remove that and instead ask this as a question for the favorite stat of the user. The Ai changed this accordingly. 
