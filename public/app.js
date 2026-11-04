@@ -7,15 +7,17 @@ function updateSliderValue(input) {
   label.textContent = input.value;
 }
 
-Array.from(document.querySelectorAll('input[type="range"]')).forEach((range) => {
-  updateSliderValue(range);
-  range.addEventListener('input', () => updateSliderValue(range));
-});
-
 async function fetchPokemonRoster() {
   const response = await fetch('/api/pokemon');
   const pokemon = await response.json();
   return pokemon;
+}
+
+function formatPreferenceLabel(value, fallback = 'any') {
+  if (!value || value === 'Any') {
+    return fallback;
+  }
+  return value;
 }
 
 function renderPartner(partner, preferences) {
@@ -26,11 +28,13 @@ function renderPartner(partner, preferences) {
       <span class="tag">${partner.type}</span>
       <span class="tag">${partner.role}</span>
       <span class="tag">${partner.battle_style}</span>
+      <span class="tag">${partner.color || 'Color'}</span>
+      <span class="tag">Gen ${partner.generation || 'N/A'}</span>
     </div>
     <p class="compatibility">Compatibility: ${partner.compatibility}%</p>
     <p>${partner.description}</p>
     <p><strong>Best stats:</strong> ATK ${partner.attack}, DEF ${partner.defense}, SPD ${partner.speed}</p>
-    <p><strong>Trainer style:</strong> ${preferences.trainerName || 'Trainer'} likes ${preferences.battleStyle} play with ${preferences.preferredType || 'any'} energy.</p>
+    <p><strong>Trainer style:</strong> ${preferences.trainerName || 'Trainer'} likes ${preferences.battleStyle} play with ${formatPreferenceLabel(preferences.preferredType, 'any')} energy, a ${formatPreferenceLabel(preferences.preferredColor, 'flexible')} palette, and a ${formatPreferenceLabel(preferences.favoriteStat, 'well-rounded')} focus.</p>
   `;
 }
 
@@ -43,7 +47,7 @@ function renderAlternatives(alternatives = []) {
   alternativeList.innerHTML = alternatives
     .map(
       (pokemon) =>
-        `<li><strong>${pokemon.name}</strong> — ${pokemon.type} · ${pokemon.compatibility}% match</li>`
+        `<li><strong>${pokemon.name}</strong> — ${pokemon.type} · ${pokemon.compatibility}% match · Gen ${pokemon.generation || 'N/A'}</li>`
     )
     .join('');
 }
@@ -56,12 +60,10 @@ form.addEventListener('submit', async (event) => {
     trainerName: formData.get('trainerName'),
     battleStyle: formData.get('battleStyle'),
     preferredType: formData.get('preferredType') === 'Any' ? 'Any' : formData.get('preferredType'),
-    teamRole: formData.get('teamRole'),
-    attack: Number(formData.get('attack')),
-    defense: Number(formData.get('defense')),
-    speed: Number(formData.get('speed')),
-    special: Number(formData.get('special')),
-    stamina: Number(formData.get('stamina'))
+    preferredColor: formData.get('preferredColor') === 'Any' ? 'Any' : formData.get('preferredColor'),
+    favoriteStat: formData.get('favoriteStat') === 'Any' ? 'Any' : formData.get('favoriteStat'),
+    generation: formData.get('generation') === 'Any' ? 'Any' : String(formData.get('generation')),
+    teamRole: formData.get('teamRole')
   };
 
   try {

@@ -96,6 +96,16 @@ select {
   padding: 12px 14px;
 }
 
+select option {
+  background: #1a253d;
+  color: var(--text);
+}
+
+select option:checked {
+  background: linear-gradient(135deg, var(--accent), #ff8f39);
+  color: #111827;
+}
+
 input[type='range'] {
   width: calc(100% - 68px);
   padding: 0;
